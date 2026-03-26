@@ -2,13 +2,14 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function Perfil() {
   return (
+    
     <View style={styles.container}>
       <View style={styles.avatar}>
-        <Text style={styles.avatarTexto}>JD</Text>
+        <Text style={styles.avatarTexto}>Fiap</Text>
       </View>
-      <Text style={styles.titulo}>João D. Aluno</Text>
-      <Text style={styles.descricao}>RM: 12345 - FIAP Campus Paulista</Text>
-      <Text style={styles.descricao}>Saldo Cantina: R$ 50,00</Text>
+      <Text style={styles.titulo}>Pedro Paulo </Text>
+      <Text style={styles.descricao}>RM: 676767 - FIAP Campus Paulista</Text>
+      <Text style={styles.descricao}>Saldo Cantina: R$ 5000,00</Text>
     </View>
   );
 }

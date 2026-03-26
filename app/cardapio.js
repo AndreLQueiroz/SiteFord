@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: 30,
     borderBottomRightRadius: 30,
     marginBottom: 20,
+    backgroundColor: "#810AAB"
   },
   saudacao: { fontSize: 24, fontWeight: '800', color: '#1A1A1A' },
   categoria: {
@@ -121,4 +122,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textoSucesso: { color: '#2E7D32', fontWeight: 'bold' },
+ 
 });
