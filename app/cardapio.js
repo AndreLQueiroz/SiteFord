@@ -1,35 +1,62 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image, Alert } from 'react-native';
 
 export default function Cardapio() {
-  const [reserva, setReserva] = useState(null);
+  const [selecionado, setSelecionado] = useState(null);
 
   const lanches = [
-    { id: 1, nome: 'Coxinha Suprema', preco: 'R$ 8,00' },
-    { id: 2, nome: 'Pão de Queijo Recheado', preco: 'R$ 6,50' },
-    { id: 3, nome: 'Hambúrguer Artesanal', preco: 'R$ 15,00' }
+    {
+      id: 1,
+      nome: 'Hambúrgao',
+      desc: 'Pão brioche, carne 150g e queijo cheddar.',
+      preco: 'R$ 22,00',
+      img: require('../assets/Hamburgao.webp'),
+    },
+    {
+      id: 2,
+      nome: 'Combo Coxinha + Suco',
+      desc: 'A clássica coxinha da FIAP com suco natural.',
+      preco: 'R$ 12,00',
+      img: require('../assets/coxinha.jpg'),
+    },
   ];
 
+  const confirmarReserva = (nome) => {
+    setSelecionado(nome);
+    Alert.alert('Reserva Confirmada', `Seu ${nome} estará pronto em 10 minutos!`);
+  };
+
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.titulo}>Cardápio do Dia</Text>
-      
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.saudacao}>O que vamos comer hoje?</Text>
+        <Text style={styles.categoria}>Populares na FIAP</Text>
+      </View>
+
       {lanches.map((item) => (
         <View key={item.id} style={styles.card}>
-          <Text style={styles.itemNome}>{item.nome}</Text>
-          <Text style={styles.itemPreco}>{item.preco}</Text>
-          <TouchableOpacity 
-            style={styles.botaoReserva} 
-            onPress={() => setReserva(item.nome)}
-          >
-            <Text style={styles.botaoTexto}>Reservar</Text>
-          </TouchableOpacity>
+          <Image source={item.img} style={styles.fotoLanche} resizeMode="cover" />
+
+          <View style={styles.infoLanche}>
+            <Text style={styles.nomeLanche}>{item.nome}</Text>
+            <Text style={styles.descLanche}>{item.desc}</Text>
+
+            <View style={styles.footerCard}>
+              <Text style={styles.preco}>{item.preco}</Text>
+              <TouchableOpacity
+                style={styles.botaoAdd}
+                onPress={() => confirmarReserva(item.nome)}
+              >
+                <Text style={styles.textoBotao}>Reservar</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
         </View>
       ))}
 
-      {reserva && (
-        <View style={styles.feedback}>
-          <Text style={styles.feedbackTexto}>✅ Sucesso! {reserva} reservado.</Text>
+      {selecionado && (
+        <View style={styles.bannerSucesso}>
+          <Text style={styles.textoSucesso}>Último pedido: {selecionado}</Text>
         </View>
       )}
     </ScrollView>
@@ -37,13 +64,61 @@ export default function Cardapio() {
 }
 
 const styles = StyleSheet.create({
-  container: { padding: 20, backgroundColor: '#fff' },
-  titulo: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
-  card: { backgroundColor: '#f9f9f9', padding: 15, borderRadius: 10, marginBottom: 15, borderWidth: 1, borderColor: '#eee' },
-  itemNome: { fontSize: 18, fontWeight: 'bold' },
-  itemPreco: { fontSize: 16, color: '#E83D84', marginVertical: 5 },
-  botaoReserva: { backgroundColor: '#E83D84', padding: 8, borderRadius: 5, alignItems: 'center' },
-  botaoTexto: { color: '#fff', fontWeight: 'bold' },
-  feedback: { marginTop: 20, padding: 15, backgroundColor: '#d4edda', borderRadius: 8 },
-  feedbackTexto: { color: '#155724', fontWeight: 'bold', textAlign: 'center' }
+  container: { flex: 1, backgroundColor: '#F8F9FA' },
+  header: {
+    padding: 25,
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 30,
+    borderBottomRightRadius: 30,
+    marginBottom: 20,
+  },
+  saudacao: { fontSize: 24, fontWeight: '800', color: '#1A1A1A' },
+  categoria: {
+    fontSize: 14,
+    color: '#E83D84',
+    fontWeight: 'bold',
+    marginTop: 5,
+    textTransform: 'uppercase',
+  },
+  card: {
+    backgroundColor: '#fff',
+    marginHorizontal: 20,
+    marginBottom: 20,
+    borderRadius: 20,
+    overflow: 'hidden',
+    elevation: 4,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+  },
+  fotoLanche: {
+    width: '100%',
+    height: 150,
+  },
+  infoLanche: { padding: 15 },
+  nomeLanche: { fontSize: 18, fontWeight: 'bold', color: '#333' },
+  descLanche: { fontSize: 14, color: '#777', marginVertical: 5 },
+  footerCard: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  preco: { fontSize: 18, fontWeight: 'bold', color: '#27ae60' },
+  botaoAdd: {
+    backgroundColor: '#E83D84',
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    borderRadius: 10,
+  },
+  textoBotao: { color: '#fff', fontWeight: 'bold' },
+  bannerSucesso: {
+    margin: 20,
+    padding: 15,
+    backgroundColor: '#E8F5E9',
+    borderRadius: 15,
+    alignItems: 'center',
+  },
+  textoSucesso: { color: '#2E7D32', fontWeight: 'bold' },
 });
