@@ -110,16 +110,46 @@ O projeto foi estruturado utilizando o **Expo Router**, com separação por tela
 
 ---
 
-## 🔮 Próximos Passos
+## 🔮 Próximas Evoluções do Projeto
 
-Se houvesse mais tempo, seriam implementadas as seguintes melhorias:
+Para tornar o aplicativo mais completo e próximo de um sistema real de produção, as seguintes melhorias foram planejadas:
 
-* Persistência de dados (AsyncStorage ou backend)
-* Sistema real de pedidos integrado com a cantina
-* Histórico de compras
-* Integração com pagamento digital
-* Login do aluno
-* Notificações em tempo real
+### 💾 Persistência de Dados
+- Implementação de armazenamento local com **AsyncStorage**
+- Evolução para backend com **API REST (Node.js ou Spring Boot)**
+- Sincronização de pedidos em tempo real
+
+### 🛒 Sistema de Pedidos Real
+- Envio de pedidos diretamente para a cantina
+- Status do pedido (em preparo, pronto, retirado)
+- Redução de filas físicas
+
+### 📊 Histórico e Controle
+- Histórico de compras do usuário
+- Controle de gastos dentro do app
+- Relatórios simples de consumo
+
+### 💳 Pagamentos
+- Integração com pagamento digital (PIX ou cartão)
+- Débito automático do saldo do aluno
+
+### 🔐 Autenticação
+- Sistema de login do aluno
+- Integração com dados institucionais (RM)
+- Segurança básica com tokens
+
+### 🔔 Notificações
+- Notificação quando o pedido estiver pronto
+- Avisos de promoções da cantina
+
+### ⚡ Melhorias de UX/UI
+- Feedback visual ao adicionar itens
+- Animações simples (loading, confirmação)
+- Melhor organização do cardápio (categorias)
+
+### 📡 Integração com IoT (diferencial)
+- Integração com sistemas físicos da cantina
+- Possível uso de sensores ou painéis para retirada de pedidos
 
 ---
 
