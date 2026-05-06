@@ -113,15 +113,29 @@ const ComparePage: React.FC = () => {
         </p>
       </div>
 
-      {/* Botão */}
-      <div className="mt-10 text-center">
+      {/* Botões */}
+      <div className="mt-10 flex justify-center gap-4">
+        
         <button
-          onClick={() => navigate('/lap')}
-          className="racing-btn-red flex items-center justify-center gap-2 mx-auto"
+          onClick={() => navigate("/")}
+          className="border border-blue-400 text-blue-300 px-6 py-3 rounded-full font-bold hover:bg-blue-400/10 transition"
+        >
+          ← Voltar
+        </button>
+
+        <button
+          onClick={() => navigate("/app/race")}
+          className="racing-btn-red flex items-center gap-2 px-6 py-3 rounded-full font-bold"
         >
           <span>Ir para corrida</span>
           <ArrowRight />
         </button>
+
+      </div>
+
+      {/* Footer opcional */}
+      <div className="mt-16 text-center text-gray-500 text-sm">
+        Ford Racing Simulator © 2026
       </div>
 
     </div>

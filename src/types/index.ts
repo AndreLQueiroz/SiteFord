@@ -21,3 +21,19 @@ export interface RacingData {
   users: User[];
   laps: LapRecord[];
 }
+
+export type Vehicle = {
+  id: number;
+  name: string;
+  brand: string;
+  category: string;
+  engine: string;
+  power: number;
+  torque: number;
+  traction: string;
+  transmission: string;
+  averagePrice: number;
+  highlight: string;
+  idealUse: string;
+  image: string;
+};
